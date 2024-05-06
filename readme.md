@@ -22,3 +22,7 @@ try this url: http://127.0.0.1/telemetry?Operating_system=Windows_%2F__Personal_
 
 to try an URL that has wrong parameters(it says only Operating instead of Operating_system) that should log a 400 showing that something went wrong try:
 http://127.0.0.1/telemetry?Operating=Windows_%2F__Personal_%2F_%28Build_22631%2C_Code_Page_65001%29_-_64-bit&Memory=32344_MB_physical%2C_34392_MB_virtual&CPU=GenuineIntel_%2C_16_cores%2C_16_logical_processors&VTK_configuration=OpenGL2_rendering%2C_TBB_threading&Qt_configuration=version_5.15.2%2C_with_SSL%2C_requested_OpenGL_3.2_%28compatibility_profile%29&Internationalization=disabled%2C_language%3D&Developer_mode=enabled
+
+### After doing the test
+
+You should see that a file named parameters.json is now saved in the folder of the program, it contains the parameters passed by the URL
