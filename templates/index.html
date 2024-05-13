@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>3D Slicer Download Statistics</title>
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bower_components/dc.js/dc.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bower_components/bootstrap-daterangepicker/daterangepicker.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bower_components/bootstrap/dist/css/bootstrap.min.css') }}" />
+
+
+<!--
+    <script>
+    var AppDefaults = {
+        downloadDataFile: 'var/slicer-download-data.json',
+        fallbackDataFile: 'etc/fallback/slicer-download-data.json'
+    };
+    </script>
+-->
+    <style type="text/css">
+    /* Add your custom styles here */
+    </style>
+</head>
+<body>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Operating_system</th>
+                <th>Memory</th>
+                <th>CPU</th>
+                <th>VTK_configuration</th>
+                <th>Qt_configuration</th>
+                <th>Internationalization</th>
+                <th>Developer_mode</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+                <td>{{ row[3] }}</td>
+                <td>{{ row[4] }}</td>
+                <td>{{ row[5] }}</td>
+                <td>{{ row[6] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -25,4 +25,4 @@ http://127.0.0.1/telemetry?Operating=Windows_%2F__Personal_%2F_%28Build_22631%2C
 
 ### After doing the test
 
-You should see that a file named parameters.json is now saved in the folder of the program, it contains the parameters passed by the URL
+You should see that a file named telemetry.db in the folder of the program, to view its content go to http://127.0.0.1/
