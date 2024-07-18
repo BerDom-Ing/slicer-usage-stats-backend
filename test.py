@@ -4,37 +4,32 @@ import urllib.parse
 
 def transform_string_to_url_query(input_string):
     # Split the string into lines
-    lines = input_string.split('\n')
+    lines = input_string.split(',')
 
     json_dict = {}
     for line in lines:
-        # Split the line into two parts
-        parts = line.split(':')
+        print(line)
+        # split the line with only the first underscore
+        module, function = line.split('_', 1)
+        #delete from module string { and "
+        module = module.replace('{', '')
+        module = module.replace('"', '') 
+        #split value with only the first colon
+        function, timesCalled = function.split(':', 1)
+        #delete from function string " 
+        function = function.replace('"', '')
+        #delete from timesCalled string }
+        timesCalled = timesCalled.replace('}', '')
+        #delete the space from the beginning of the string
+        timesCalled = timesCalled.strip()
+        module = module.strip()
+        # print the value
+        print(module)
+        print(function)
+        print(timesCalled)
 
-        # Remove right padding of "." and spaces from the first part
-        key = parts[0].rstrip('. ').rstrip()
-
-        # Remove leading spaces from the second part
-        value = parts[1].lstrip()
-
-        # Replace spaces in key and value with "_"
-        key = key.replace(' ', '_')
-        value = value.replace(' ', '_')
-
-        # Add the key-value pair to the dictionary
-        json_dict[key] = value
-
-    # Convert the dictionary to a URL query string
-    url_query = urllib.parse.urlencode(json_dict)
-
-    return url_query
+    return json_dict
 
 # Test the function
-input_string = """Operating system .........: Windows /  Personal / (Build 22631, Code Page 65001) - 64-bit
-Memory ...................: 32344 MB physical, 34392 MB virtual
-CPU ......................: GenuineIntel , 16 cores, 16 logical processors
-VTK configuration ........: OpenGL2 rendering, TBB threading
-Qt configuration .........: version 5.15.2, with SSL, requested OpenGL 3.2 (compatibility profile)
-Internationalization .....: disabled, language=
-Developer mode ...........: enabled"""
-print(transform_string_to_url_query(input_string))
+input_json = """{"BoneReconstructionPlanner_onGenerateFibulaPlanesTimerTimeout": 3, "MyFirstModule_sendFunctionCountToServer": 4, "MyFirstModule_send_function_count_to_server": 15}"""
+transform_string_to_url_query(input_json)

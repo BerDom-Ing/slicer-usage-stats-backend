@@ -1,0 +1,52 @@
+[
+    {
+        "function": "sendFunctionCountToServer",
+        "time": "2024-07-18T19:09:32.139663",
+        "selected_module": "SendTelemetryInfo"
+    },
+    {
+        "function": "sendFunctionCountToServer",
+        "time": "2024-07-18T19:11:41.313615",
+        "selected_module": "SendTelemetryInfo"
+    },
+    {
+        "function": "sendFunctionCountToServer",
+        "time": "2024-07-18T19:12:41.821670",
+        "selected_module": "SendTelemetryInfo"
+    },
+    {
+        "function": "onGenerateFibulaPlanesTimerTimeout",
+        "time": "2024-07-18T19:13:21.548682",
+        "selected_module": "BoneReconstructionPlanner"
+    },
+    {
+        "function": "onGenerateFibulaPlanesTimerTimeout",
+        "time": "2024-07-18T19:13:26.458916",
+        "selected_module": "BoneReconstructionPlanner"
+    },
+    {
+        "function": "onGenerateFibulaPlanesTimerTimeout",
+        "time": "2024-07-18T19:13:30.648211",
+        "selected_module": "BoneReconstructionPlanner"
+    },
+    {
+        "function": "makeBooleanOperationsToFibulaSurgicalGuideBase",
+        "time": "2024-07-18T19:13:42.086707",
+        "selected_module": "BoneReconstructionPlanner"
+    },
+    {
+        "function": "makeBooleanOperationsToFibulaSurgicalGuideBase",
+        "time": "2024-07-18T19:13:48.568260",
+        "selected_module": "BoneReconstructionPlanner"
+    },
+    {
+        "function": "onGenerateFibulaPlanesTimerTimeout",
+        "time": "2024-07-18T19:13:57.434218",
+        "selected_module": "BoneReconstructionPlanner"
+    },
+    {
+        "function": "sendFunctionCountToServer",
+        "time": "2024-07-18T19:14:09.764613",
+        "selected_module": "SendTelemetryInfo"
+    }
+]

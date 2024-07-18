@@ -24,13 +24,9 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Operating_system</th>
-                <th>Memory</th>
-                <th>CPU</th>
-                <th>VTK_configuration</th>
-                <th>Qt_configuration</th>
-                <th>Internationalization</th>
-                <th>Developer_mode</th>
+                <th>Times called</th>
+                <th>Module name</th>
+                <th>Function name</th>
             </tr>
         </thead>
         <tbody>
@@ -39,10 +35,6 @@
                 <td>{{ row[0] }}</td>
                 <td>{{ row[1] }}</td>
                 <td>{{ row[2] }}</td>
-                <td>{{ row[3] }}</td>
-                <td>{{ row[4] }}</td>
-                <td>{{ row[5] }}</td>
-                <td>{{ row[6] }}</td>
             </tr>
             {% endfor %}
         </tbody>
