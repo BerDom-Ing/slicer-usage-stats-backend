@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temporal Data Exploration</title>
+    <link rel="stylesheet" type="text/css" href="bower_components/dc.js/dc.css" />
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap-daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" type="text/css"
+     href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    
+    <style>
+        .chart-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .chart {
+            margin-bottom: 20px;
+        }
+    </style>
+    <style>
+        #tooltip {
+            position: absolute;
+            opacity: 0;
+            background: white;
+            border: 1px solid black;
+            padding: 5px;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+  <div class="col-md-1 col-sm-2 hidden-xs">
+    <a href="https://www.slicer.org/"><img src="img/slicer-logo-80x80.png"></img></a>
+  </div>
+    <div class="chart-container">
+        <button id="reset-button">Reset All Filters</button>
+        <div id="time-chart" class="chart"></div>
+        <div id="tooltip"></div>
+        <div id="map-chart" class="chart"></div>
+        <!-- <div id="city-chart"></div> -->
+        <div id="module-chart" class="chart"></div>
+        <div id="function-chart" class="chart"></div>
+    </div>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter2/1.5.4/crossfilter.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dc/4.2.7/dc.min.js"></script>
+    <script src="stats.js"></script>
+</body>
+</html>

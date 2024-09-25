@@ -1,10 +1,10 @@
 import csv
 import os
 import json
-from flask import Flask, request, abort
+from flask import Flask, request, abort, send_from_directory
 import geoip2.database
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static', static_url_path='')
 
 def get_location_from_ip(ip, db_path):
     # Open the GeoIP database
@@ -109,7 +109,7 @@ def telemetry_post():
             entry['city'] = location['city']
 
         # Define the path to the CSV file
-        csv_file_path = 'data.csv'
+        csv_file_path = os.path.join(app.static_folder, 'data.csv')
 
         # Check if the file exists to determine if we need to write the header
         file_exists = os.path.exists(csv_file_path)
@@ -129,6 +129,17 @@ def telemetry_post():
     except Exception as e:
         app.logger.error(f"Error processing request: {e}")
         abort(500, "Internal Server Error")
+
+@app.route('/')
+def serve_index():
+    return send_from_directory(app.static_folder, 'index.html')
+
+@app.route('/<path:path>')
+def serve_static(path):
+    if path != "" and os.path.exists(os.path.join(app.static_folder, path)):
+        return send_from_directory(app.static_folder, path)
+    else:
+        abort(404)
 
 if __name__ == '__main__':
     app.run(debug=True)

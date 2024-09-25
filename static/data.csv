@@ -143,5 +143,5 @@ RehabilitationExercisePlanner,manageResourceAllocation,2022-03-17,3,United State
 PulmonaryFunctionTester,reportSystemHealthStatus,2023-04-11,10,Italy,ITA,
 ObstetricsLaborTracker,verifyDataIntegrity,2023-01-23,2,China,CHN,
 TelemetryExtension,sendFunctionCountToServer,2024-09-24,1,Unknown,,Unknown
-TelemetryExtension,sendFunctionCountToServer,2024-09-24,2,Unknown,,Unknown
-TelemetryExtension,sendFunctionCountToServer,2024-09-24,1,Unknown,,Unknown
+TelemetryExtension,logAnEvent,2024-09-24,9,Unknown,,Unknown
+TelemetryExtension,logAnEvent,2024-09-25,1,Unknown,,Unknown
