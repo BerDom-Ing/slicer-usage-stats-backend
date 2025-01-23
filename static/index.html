@@ -6,20 +6,39 @@
     <title>Temporal Data Exploration</title>
     <link rel="stylesheet" type="text/css" href="bower_components/dc.js/dc.css" />
     <link rel="stylesheet" type="text/css" href="bower_components/bootstrap-daterangepicker/daterangepicker.css" />
-    <link rel="stylesheet" type="text/css"
-     href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
     
     <style>
-        .chart-container {
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+        }
+        .main-container {
+            display: flex;
+            height: 100%;
+        }
+        .left-container, .right-container {
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .center-container {
+            flex: 2;
             display: flex;
             flex-direction: column;
             align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
         }
         .chart {
+            width: 100%;
             margin-bottom: 20px;
         }
-    </style>
-    <style>
+        #reset-button {
+            margin-bottom: 20px;
+        }
         #tooltip {
             position: absolute;
             opacity: 0;
@@ -28,20 +47,50 @@
             padding: 5px;
             pointer-events: none;
         }
+        .selected {
+            stroke: rgb(220, 68, 68);
+            stroke-width: 2px;
+        }
     </style>
+    <style>
+        /* Add these styles to your existing CSS */
+        .chart-container {
+            height: 700px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+        
+        /* Update existing styles */
+        .left-container, .right-container {
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+            max-height: 100vh;
+        }
+        </style>
 </head>
 <body>
-  <div class="col-md-1 col-sm-2 hidden-xs">
-    <a href="https://www.slicer.org/"><img src="img/slicer-logo-80x80.png"></img></a>
-  </div>
-    <div class="chart-container">
-        <button id="reset-button">Reset All Filters</button>
-        <div id="time-chart" class="chart"></div>
-        <div id="tooltip"></div>
-        <div id="map-chart" class="chart"></div>
-        <!-- <div id="city-chart"></div> -->
-        <div id="module-chart" class="chart"></div>
-        <div id="function-chart" class="chart"></div>
+    <div class="col-md-1 col-sm-2 hidden-xs">
+        <a href="https://www.slicer.org/"><img src="img/slicer-logo-80x80.png"></img></a>
+    </div>
+    <div class="main-container">
+        <div class="left-container">
+            <div class="chart-container">
+                <div id="module-chart" class="chart"></div>
+            </div>
+        </div>
+        <div class="center-container">
+            <button id="reset-button">Reset All Filters</button>
+            <div id="time-chart" class="chart"></div>
+            <div id="tooltip"></div>
+            <div id="map-chart" class="chart"></div>
+        </div>
+        <div class="right-container">
+            <div class="chart-container">
+                <div id="function-chart" class="chart"></div>
+            </div>
+        </div>
     </div>
 
     <script src="https://d3js.org/d3.v7.min.js"></script>
