@@ -25,7 +25,45 @@ Promise.all([
     const countryDim = cf.dimension(d => d.country_code);
     const cityDim = cf.dimension(d => d.city);
 
-
+    function createSearchFunction(dimension, chart) {
+        return function() {
+            const searchBox = this;
+            const searchTerm = searchBox.value.toLowerCase();
+            const originalGroup = dimension.group();
+            
+            // Clear previous filters
+            dimension.filterAll();
+            
+            if (searchTerm !== '') {
+                // Get matching keys based on search term
+                const matchingKeys = originalGroup.all()
+                    .filter(item => item.key.toLowerCase().includes(searchTerm))
+                    .map(item => item.key);
+                
+                if (matchingKeys.length > 0) {
+                    // Apply dimension filter to affect all charts
+                    dimension.filterFunction(d => matchingKeys.includes(d));
+                    
+                    // Create filtered group that only shows matching items
+                    const filteredGroup = {
+                        all: function() {
+                            return originalGroup.all().filter(d => matchingKeys.includes(d.key));
+                        }
+                    };
+                    
+                    // Update chart to use filtered group
+                    chart.group(filteredGroup);
+                }
+            } else {
+                // Reset to original group when search is cleared
+                chart.group(originalGroup);
+            }
+            
+            // Redraw all charts to reflect the new filter
+            dc.redrawAll();
+            updateMap();
+        }
+    }
     // Create groups
     const dateGroup = dateDim.group(d3.timeDay);
     const moduleGroup = moduleDim.group().reduceCount();
@@ -74,6 +112,11 @@ moduleChart
         chart.selectAll('g.row text')
             .style('fill', 'black');
     });
+    moduleChart.filterHandler((dimension, filters) => {
+        dimension.filter(null);
+        if (filters.length) dimension.filterFunction(d => filters.includes(d));
+        return filters;
+    });
 
 // Function chart (same modifications)
 functionChart
@@ -95,6 +138,11 @@ functionChart
         chart.selectAll('g.row text')
             .style('fill', 'black');
     });
+    functionChart.filterHandler((dimension, filters) => {
+        dimension.filter(null);
+        if (filters.length) dimension.filterFunction(d => filters.includes(d));
+        return filters;
+    });
 
     // City chart
     cityChart
@@ -112,6 +160,8 @@ functionChart
         chart.selectAll('g.x text')
             .attr('transform', 'translate(-10,10) rotate(270)');
     });    
+
+    dc.renderAll();
 
     // World Map
     const width = 800;
@@ -180,19 +230,29 @@ functionChart
                 d3.select("#tooltip").style("opacity", 0);
             });
     }
+
+    document.getElementById('module-search').addEventListener('input', createSearchFunction(moduleDim, moduleChart));
+    document.getElementById('function-search').addEventListener('input', createSearchFunction(functionDim, functionChart));
+
     // Add reset button
     d3.select('#reset-button')
-        .on('click', function() {
-            dc.filterAll();
-            countryDim.filterAll();
-            cityDim.filterAll();
-            dc.renderAll();
-            updateMap();
-        });
+    .on('click', function() {
+        dc.filterAll();
+        countryDim.filterAll();
+        cityDim.filterAll();
+        
+        // Clear search boxes
+        document.getElementById('module-search').value = '';
+        document.getElementById('function-search').value = '';
 
-    // Render the charts and map
-    dc.renderAll();
-    updateMap();
+        moduleChart.group(moduleGroup);
+        functionChart.group(functionGroup);
+        
+        dc.renderAll();
+        updateMap();
+    });
+
+
 
     // Update map when any chart is filtered
     function onFiltered() {

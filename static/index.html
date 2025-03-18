@@ -69,6 +69,15 @@
             max-height: 100vh;
         }
         </style>
+        <style>
+            .search-box {
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 10px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+            }
+            </style>
 </head>
 <body>
     <div class="col-md-1 col-sm-2 hidden-xs">
@@ -77,6 +86,7 @@
     <div class="main-container">
         <div class="left-container">
             <div class="chart-container">
+                <input type="text" id="module-search" placeholder="Search modules..." class="search-box">
                 <div id="module-chart" class="chart"></div>
             </div>
         </div>
@@ -88,6 +98,7 @@
         </div>
         <div class="right-container">
             <div class="chart-container">
+                <input type="text" id="function-search" placeholder="Search functions..." class="search-box">
                 <div id="function-chart" class="chart"></div>
             </div>
         </div>

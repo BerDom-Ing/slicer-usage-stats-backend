@@ -1,155 +1,43 @@
 component,event,day,times,country,country_code,city
-TelemetryExtension,sendFunctionCountToServer,2024-09-19,4,Unknown,,Unknown
-BoneReconstructionPlanner,onGenerateFibulaPlanesTimerTimeout,2024-09-19,4,Unknown,,Unknown
-BoneReconstructionPlanner,makeBooleanOperationsToMandibleSurgicalGuideBase,2024-09-19,3,Unknown,,Unknown
-ENTProcedureGuide,verifyDataIntegrity,2019-01-09,2,Brazil,BRA,Rio de Janeiro
-PatientEngagementHub,calculateOptimalPathways,2022-12-02,2,China,CHN,
-ENTProcedureGuide,archiveOldLogFiles,2019-02-11,8,Unknown,,Unknown
-PulmonaryFunctionTester,analyzeServerPerformance,2019-12-20,3,Germany,DEU,Munich
-PharmacyInventoryManager,deploySoftwareUpdates,2020-01-16,6,Italy,ITA,
-ImmunologyResponseEvaluator,makeBooleanOperationsToFibulaSurgicalGuideBase,2022-04-10,10,Unknown,,Unknown
-HospitalRoomAllocationSystem,updateFirmwareVersions,2019-06-04,6,United States,USA,Waterloo
-SportsInjuryPreventor,deploySoftwareUpdates,2020-03-10,2,Chile,CHL,Valparaíso
-HematologyAnalyzer,manageResourceAllocation,2021-12-29,9,United States,USA,
-WoundCareToolkit,monitorNetworkLatency,2019-07-03,2,South Africa,ZAF,Stellenbosch
-EndocrineHealthMonitor,updateFirmwareVersions,2021-02-10,7,Finland,FIN,
-HospitalRoomAllocationSystem,sendFunctionCountToServer,2024-03-07,7,Unknown,,Unknown
-NeurosurgeryNavigationSystem,updateFirmwareVersions,2019-06-02,2,Italy,ITA,Milan
-PainManagementAdvisor,analyzeServerPerformance,2021-08-23,1,United States,USA,
-PainManagementAdvisor,onGenerateFibulaPlanesTimerTimeout,2024-01-05,10,China,CHN,
-BloodPressureRegulator,analyzeServerPerformance,2020-05-09,3,Japan,JPN,Gujō
-ENTProcedureGuide,simulateLoadBalancing,2019-10-30,5,United States,USA,West Richland
-GeriatricCarePlanner,generateEncryptionKeys,2022-09-08,6,United States,USA,
-PatientEngagementHub,verifyDataIntegrity,2023-11-02,8,United States,USA,
-NeuralNetworkDiagnostics,configureVirtualMachines,2022-09-03,10,United States,USA,
-MedicalEducationSimulator,simulateLoadBalancing,2020-12-23,2,China,CHN,
-MedicalEducationSimulator,archiveOldLogFiles,2023-08-14,7,United States,USA,Reynoldsburg
-InfectiousDiseaseMapper,analyzeServerPerformance,2021-04-07,7,United States,USA,
-VaccineAdministrationLog,initializeSystemDiagnostics,2021-10-28,7,Brazil,BRA,
-RadiologyImagingCenter,trackApplicationDependencies,2022-09-04,4,Brazil,BRA,São Paulo
-WoundCareToolkit,updateFirmwareVersions,2024-05-26,2,South Korea,KOR,Seoul
-AllergyReactionTracker,configureVirtualMachines,2020-12-31,8,United States,USA,
-ObstetricsLaborTracker,deploySoftwareUpdates,2021-10-27,3,Unknown,,Unknown
-OphthalmologyVisionAnalyzer,scheduleSystemBackups,2023-11-17,8,United States,USA,Grand Rapids
-NeurosurgeryNavigationSystem,simulateLoadBalancing,2019-04-17,6,China,CHN,
-MentalHealthTherapyAssistant,monitorNetworkLatency,2021-09-27,8,Japan,JPN,
-OphthalmologyVisionAnalyzer,initializeSystemDiagnostics,2022-02-28,2,South Korea,KOR,
-MentalHealthTherapyAssistant,verifyDataIntegrity,2023-01-01,6,Australia,AUS,Sydney
-GeriatricCarePlanner,monitorNetworkLatency,2019-07-14,5,Russia,RUS,Moscow
-PulmonaryFunctionTester,sendFunctionCountToServer,2020-05-26,3,United States,USA,
-SportsInjuryPreventor,analyzeServerPerformance,2019-06-08,7,Unknown,,Unknown
-HealthcarePolicyLibrary,archiveOldLogFiles,2019-01-01,5,United States,USA,
-MedicalWasteManagement,reportSystemHealthStatus,2022-12-08,10,United Kingdom,GBR,
-UrologyManagementSystem,verifyDataIntegrity,2023-01-26,9,United States,USA,Columbus
-PediatricCareAssistant,verifyDataIntegrity,2021-02-22,2,United Kingdom,GBR,Swindon
-ClinicalTrialManager,deploySoftwareUpdates,2024-02-26,1,United States,USA,Glen Mills
-HealthcarePolicyLibrary,deploySoftwareUpdates,2019-02-03,4,United States,USA,Crested Butte
-RehabilitationExercisePlanner,validateUserPermissions,2019-12-10,2,Sweden,SWE,
-HealthcarePolicyLibrary,validateUserPermissions,2019-07-01,1,United States,USA,
-GeneticDisorderExplorer,optimizeDatabaseQueries,2021-08-07,9,Unknown,,Unknown
-ClinicalTrialManager,validateUserPermissions,2021-07-28,1,Unknown,,Unknown
-OrthopedicProcedureSimulator,verifyDataIntegrity,2022-03-24,6,China,CHN,
-ClinicalTrialManager,updateFirmwareVersions,2023-04-26,3,Japan,JPN,
-SportsInjuryPreventor,initializeSystemDiagnostics,2022-01-15,5,United States,USA,
-SurgicalInstrumentTracker,optimizeDatabaseQueries,2024-07-09,10,Germany,DEU,
-NeuralNetworkDiagnostics,verifyDataIntegrity,2021-02-23,5,United States,USA,
-FitnessAndWellnessGuide,cleanTemporaryFiles,2020-08-07,1,Unknown,,Unknown
-HealthcarePolicyLibrary,sendFunctionCountToServer,2020-03-19,8,Germany,DEU,Hamburg
-DiabetesCareManager,monitorNetworkLatency,2024-09-21,3,United Kingdom,GBR,
-DermatologyTreatmentPlanner,makeBooleanOperationsToFibulaSurgicalGuideBase,2023-04-01,5,France,FRA,
-CardiovascularAssessmentTool,generateEncryptionKeys,2021-08-25,7,United States,USA,Scotts Valley
-OphthalmologyVisionAnalyzer,deploySoftwareUpdates,2023-10-06,2,Brazil,BRA,São Caetano do Sul
-ObstetricsLaborTracker,scheduleSystemBackups,2019-03-05,2,Japan,JPN,
-GastrointestinalTracker,validateUserPermissions,2023-08-30,10,Argentina,ARG,La Plata
-PatientFeedbackAnalyzer,calculateOptimalPathways,2019-01-01,2,China,CHN,Zhengzhou
-MedicalEducationSimulator,initializeSystemDiagnostics,2022-09-24,8,United Kingdom,GBR,
-BloodPressureRegulator,manageResourceAllocation,2022-01-29,2,The Netherlands,NLD,Nieuwveen
-SleepDisorderAnalyzer,deploySoftwareUpdates,2021-04-24,6,Türkiye,TUR,
-EmergencyResponseCoordinator,sendFunctionCountToServer,2020-09-08,10,France,FRA,Hettange-Grande
-RehabilitationExercisePlanner,analyzeServerPerformance,2021-03-09,5,China,CHN,
-PainManagementAdvisor,reportSystemHealthStatus,2023-06-13,4,Unknown,,Unknown
-MedicalBillingAndCoding,analyzeServerPerformance,2021-11-14,9,United States,USA,
-HematologyAnalyzer,deploySoftwareUpdates,2019-10-16,4,Italy,ITA,
-PatientFeedbackAnalyzer,simulateLoadBalancing,2023-09-02,6,United States,USA,Los Angeles
-NeuralNetworkDiagnostics,updateFirmwareVersions,2022-10-16,4,Japan,JPN,
-NeuralNetworkDiagnostics,manageResourceAllocation,2024-04-02,7,China,CHN,Shenyang
-BloodPressureRegulator,makeBooleanOperationsToFibulaSurgicalGuideBase,2022-10-21,10,Unknown,,Unknown
-GastrointestinalTracker,verifyDataIntegrity,2022-02-27,3,Unknown,,Unknown
-HospitalRoomAllocationSystem,configureVirtualMachines,2022-06-23,9,United States,USA,
-RadiologyImagingCenter,cleanTemporaryFiles,2022-05-29,4,United States,USA,Ashburn
-MedicalResearchDatabase,onGenerateFibulaPlanesTimerTimeout,2024-03-26,10,United States,USA,
-FertilityAndIVFHelper,scheduleSystemBackups,2024-10-28,8,Japan,JPN,Nishinomiya
-HealthcareComplianceMonitor,reportSystemHealthStatus,2020-04-28,3,United States,USA,Batesville
-ENTProcedureGuide,analyzeServerPerformance,2020-03-13,5,Colombia,COL,Medellín
-DentalHealthProfiler,cleanTemporaryFiles,2024-01-03,9,Unknown,,Unknown
-FertilityAndIVFHelper,makeBooleanOperationsToFibulaSurgicalGuideBase,2022-07-04,2,United States,USA,
-EndocrineHealthMonitor,auditSecurityCompliance,2020-02-15,5,Brazil,BRA,Barueri
-TelemedicineConsultationPortal,initializeSystemDiagnostics,2023-06-30,1,United States,USA,
-SleepDisorderAnalyzer,restoreArchivedData,2023-09-25,3,Japan,JPN,
-AmbulanceDispatchSystem,auditSecurityCompliance,2020-12-10,1,United States,USA,
-RadiologyImagingCenter,restoreArchivedData,2022-09-04,9,United States,USA,
-MedicalEducationSimulator,generateEncryptionKeys,2021-07-09,8,United States,USA,
-VaccineAdministrationLog,sendFunctionCountToServer,2023-07-02,6,United States,USA,
-PatientFeedbackAnalyzer,monitorNetworkLatency,2021-06-23,5,United States,USA,Knoxville
-FertilityAndIVFHelper,calculateOptimalPathways,2020-03-10,6,United States,USA,Dallas
-WoundCareToolkit,deploySoftwareUpdates,2021-10-03,7,United States,USA,North Charleston
-CardiovascularAssessmentTool,validateUserPermissions,2023-05-02,8,Unknown,,Unknown
-BloodPressureRegulator,analyzeServerPerformance,2022-08-17,8,Unknown,,Unknown
-PatientFeedbackAnalyzer,restoreArchivedData,2019-10-23,6,Unknown,,Unknown
-HospitalRoomAllocationSystem,makeBooleanOperationsToFibulaSurgicalGuideBase,2021-12-06,6,United States,USA,
-TelemedicineConsultationPortal,verifyDataIntegrity,2019-08-15,3,China,CHN,
-SurgicalInstrumentTracker,generateEncryptionKeys,2022-01-26,8,United States,USA,
-PulmonaryFunctionTester,manageResourceAllocation,2024-12-14,2,Hong Kong,HKG,
-GeriatricCarePlanner,validateUserPermissions,2023-07-25,5,India,IND,Bengaluru
-SurgicalInstrumentTracker,onGenerateFibulaPlanesTimerTimeout,2023-12-04,1,China,CHN,
-SurgicalInstrumentTracker,scheduleSystemBackups,2024-07-23,9,United States,USA,
-RadiologyImagingCenter,updateFirmwareVersions,2024-07-25,10,Spain,ESP,Valencia
-HealthcareComplianceMonitor,manageResourceAllocation,2019-11-28,6,Japan,JPN,Kurashiki
-RehabilitationExercisePlanner,simulateLoadBalancing,2019-11-19,10,United States,USA,
-PatientFeedbackAnalyzer,deploySoftwareUpdates,2022-09-30,4,Latvia,LVA,
-HematologyAnalyzer,initializeSystemDiagnostics,2019-06-11,5,United States,USA,
-NeuralNetworkDiagnostics,trackApplicationDependencies,2020-03-10,8,United States,USA,
-AllergyReactionTracker,reportSystemHealthStatus,2022-07-20,4,China,CHN,
-MedicalBillingAndCoding,cleanTemporaryFiles,2019-12-03,7,Tunisia,TUN,Tunis
-DermatologyTreatmentPlanner,monitorNetworkLatency,2024-06-24,5,United States,USA,
-SportsInjuryPreventor,analyzeServerPerformance,2024-08-26,10,Unknown,,Unknown
-DiabetesCareManager,monitorNetworkLatency,2021-02-13,1,United States,USA,
-FertilityAndIVFHelper,cleanTemporaryFiles,2019-01-21,3,Germany,DEU,
-ENTProcedureGuide,auditSecurityCompliance,2019-05-10,3,United States,USA,
-FertilityAndIVFHelper,scheduleSystemBackups,2023-10-16,7,Unknown,,Unknown
-MentalHealthTherapyAssistant,updateFirmwareVersions,2024-08-21,6,United States,USA,
-NeurosurgeryNavigationSystem,configureVirtualMachines,2022-07-07,7,Unknown,,Unknown
-EmergencyResponseCoordinator,archiveOldLogFiles,2023-05-28,9,United States,USA,
-RehabilitationExercisePlanner,verifyDataIntegrity,2023-08-08,5,Unknown,,Unknown
-BloodPressureRegulator,sendFunctionCountToServer,2021-02-13,1,Canada,CAN,
-NeuralNetworkDiagnostics,updateFirmwareVersions,2022-08-18,1,South Korea,KOR,
-GeneticDisorderExplorer,scheduleSystemBackups,2023-03-18,8,United Kingdom,GBR,Bingley
-OphthalmologyVisionAnalyzer,auditSecurityCompliance,2020-06-04,4,Japan,JPN,Kinuta
-PatientEngagementHub,restoreArchivedData,2023-04-19,2,United States,USA,
-OncologyTreatmentOptimizer,deploySoftwareUpdates,2020-12-20,6,United States,USA,
-HospitalRoomAllocationSystem,restoreArchivedData,2020-01-18,7,United States,USA,
-OrthopedicProcedureSimulator,archiveOldLogFiles,2020-06-05,4,United States,USA,
-GastrointestinalTracker,trackApplicationDependencies,2024-04-01,6,Unknown,,Unknown
-NeurosurgeryNavigationSystem,calculateOptimalPathways,2022-11-16,1,United States,USA,
-SleepDisorderAnalyzer,generateEncryptionKeys,2023-08-08,6,United States,USA,
-MedicalResearchDatabase,trackApplicationDependencies,2020-05-09,2,Romania,ROU,
-NeuralNetworkDiagnostics,sendFunctionCountToServer,2020-03-11,8,Unknown,,Unknown
-EmergencyResponseCoordinator,cleanTemporaryFiles,2021-11-02,5,Mexico,MEX,Tizayuca
-ENTProcedureGuide,monitorNetworkLatency,2024-01-10,1,Spain,ESP,Madrid
-PharmacyInventoryManager,initializeSystemDiagnostics,2023-11-04,5,India,IND,
-EmergencyResponseCoordinator,monitorNetworkLatency,2019-05-14,2,Unknown,,Unknown
-AllergyReactionTracker,calculateOptimalPathways,2023-12-04,8,China,CHN,
-RehabilitationExercisePlanner,manageResourceAllocation,2022-03-17,3,United States,USA,
-PulmonaryFunctionTester,reportSystemHealthStatus,2023-04-11,10,Italy,ITA,
-ObstetricsLaborTracker,verifyDataIntegrity,2023-01-23,2,China,CHN,
-TelemetryExtension,sendFunctionCountToServer,2024-09-24,1,Unknown,,Unknown
-TelemetryExtension,logAnEvent,2024-09-24,9,Unknown,,Unknown
-TelemetryExtension,logAnEvent,2024-09-25,1,Unknown,,Unknown
-TelemetryExtension,sendFunctionCountToServer,2024-09-24,1,Unknown,,Unknown
-TelemetryExtension,logAnEvent,2024-09-24,9,Unknown,,Unknown
-TelemetryExtension,logAnEvent,2024-09-25,4,Unknown,,Unknown
-TelemetryExtension,sendFunctionCountToServer,2024-09-24,1,Unknown,,Unknown
-TelemetryExtension,logAnEvent,2024-09-24,9,Unknown,,Unknown
-TelemetryExtension,logAnEvent,2024-09-25,4,Unknown,,Unknown
-TelemetryExtension,logAnEvent,2024-10-05,2,Unknown,,Unknown
-SlicerTelemetry,logAnEvent,2024-10-05,1,Unknown,,Unknown
+HospitalRoomAllocationSystem,initializeSystemDiagnostics,2020-04-27,7,United Kingdom,GBR,Manchester
+SleepDisorderAnalyzer,configureVirtualMachines,2022-10-29,3,United States,USA,
+RehabilitationExercisePlanner,validateUserPermissions,2019-11-17,10,India,IND,
+SurgicalInstrumentTracker,initializeSystemDiagnostics,2022-06-13,8,China,CHN,
+FitnessAndWellnessGuide,generateEncryptionKeys,2024-04-01,3,The Netherlands,NLD,Amsterdam
+MedicalResearchDatabase,trackApplicationDependencies,2024-09-29,8,Poland,POL,Ełk
+SleepDisorderAnalyzer,validateUserPermissions,2021-01-02,3,South Africa,ZAF,Pretoria
+MedicalEducationSimulator,initializeSystemDiagnostics,2022-01-23,6,Unknown,,Unknown
+OphthalmologyVisionAnalyzer,manageResourceAllocation,2022-07-20,7,Canada,CAN,
+TelemedicineConsultationPortal,simulateLoadBalancing,2020-06-05,2,Egypt,EGY,
+InfectiousDiseaseMapper,cleanTemporaryFiles,2021-01-29,10,Italy,ITA,Milan
+TelemedicineConsultationPortal,calculateOptimalPathways,2022-01-27,3,United States,USA,
+MedicalEducationSimulator,sendFunctionCountToServer,2024-09-02,7,Austria,AUT,
+TelemedicineConsultationPortal,manageResourceAllocation,2022-12-18,2,Unknown,,Unknown
+UrologyManagementSystem,configureVirtualMachines,2021-08-07,9,United Kingdom,GBR,Mirfield
+NeuralNetworkDiagnostics,scheduleSystemBackups,2024-11-03,1,Mexico,MEX,Cuautitlán Izcalli
+ImmunologyResponseEvaluator,makeBooleanOperationsToFibulaSurgicalGuideBase,2021-04-05,8,Unknown,,Unknown
+PulmonaryFunctionTester,manageResourceAllocation,2024-08-04,10,Unknown,,Unknown
+MedicalBillingAndCoding,initializeSystemDiagnostics,2023-10-30,9,United States,USA,Seattle
+FertilityAndIVFHelper,calculateOptimalPathways,2024-05-30,3,United Arab Emirates,ARE,Dubai
+ENTProcedureGuide,onGenerateFibulaPlanesTimerTimeout,2019-01-08,1,United States,USA,
+OphthalmologyVisionAnalyzer,makeBooleanOperationsToFibulaSurgicalGuideBase,2023-12-07,4,United States,USA,Kissimmee
+NeuralNetworkDiagnostics,generateEncryptionKeys,2021-05-06,6,Unknown,,Unknown
+GeriatricCarePlanner,auditSecurityCompliance,2024-08-29,8,United States,USA,
+RadiologyImagingCenter,makeBooleanOperationsToFibulaSurgicalGuideBase,2023-01-30,6,United States,USA,
+ENTProcedureGuide,auditSecurityCompliance,2022-02-01,8,China,CHN,
+WoundCareToolkit,configureVirtualMachines,2024-09-22,6,China,CHN,
+FitnessAndWellnessGuide,trackApplicationDependencies,2022-01-27,4,United States,USA,
+HematologyAnalyzer,configureVirtualMachines,2021-12-09,5,Hungary,HUN,Budapest
+VaccineAdministrationLog,generateEncryptionKeys,2020-06-27,7,United States,USA,Raleigh
+HealthcarePolicyLibrary,cleanTemporaryFiles,2022-05-16,10,United Kingdom,GBR,Downpatrick
+ENTProcedureGuide,validateUserPermissions,2022-11-11,5,Australia,AUS,Melbourne
+SleepDisorderAnalyzer,reportSystemHealthStatus,2022-07-15,1,United States,USA,
+RehabilitationExercisePlanner,restoreArchivedData,2024-11-07,3,United States,USA,Cumming
+InfectiousDiseaseMapper,configureVirtualMachines,2024-04-05,8,Unknown,,Unknown
+FertilityAndIVFHelper,manageResourceAllocation,2022-06-02,3,United States,USA,Chicago
+BloodPressureRegulator,auditSecurityCompliance,2020-03-07,5,Unknown,,Unknown
+PulmonaryFunctionTester,trackApplicationDependencies,2022-10-15,2,The Netherlands,NLD,Amsterdam
+HealthcareComplianceMonitor,optimizeDatabaseQueries,2023-01-07,10,Unknown,,Unknown
+AllergyReactionTracker,makeBooleanOperationsToFibulaSurgicalGuideBase,2019-12-13,6,China,CHN,
+MedicalResearchDatabase,configureVirtualMachines,2023-05-25,6,Italy,ITA,Turin
+VaccineAdministrationLog,manageResourceAllocation,2022-03-19,3,United States,USA,
