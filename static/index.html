@@ -9,6 +9,41 @@
     <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
     
     <style>
+    #loading-spinner {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.8);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+    
+    .spinner {
+        width: 60px;
+        height: 60px;
+        border: 6px solid #3498db;
+        border-radius: 50%;
+        border-top-color: transparent;
+        animation: spin 1s linear infinite;
+    }
+    
+    .spinner-text {
+        margin-top: 15px;
+        font-size: 18px;
+        color: #333;
+    }
+    
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+    </style>
+    
+    <style>
         body, html {
             margin: 0;
             padding: 0;
@@ -80,6 +115,12 @@
             </style>
 </head>
 <body>
+    <div id="loading-spinner">
+        <div class="spinner"></div>
+        <div id="loading-status">Loading data...</div>
+        <div id="loading-count">0 rows loaded</div>
+        </div>
+      </div>
     <div class="col-md-1 col-sm-2 hidden-xs">
         <a href="https://www.slicer.org/"><img src="img/slicer-logo-80x80.png"></img></a>
     </div>
