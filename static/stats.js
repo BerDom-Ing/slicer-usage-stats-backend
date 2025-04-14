@@ -17,6 +17,17 @@ function updateLoadingCount(count) {
     }
 }
 
+// Function to update the progress bar
+function updateProgressBar(percent) {
+    const progressFill = document.getElementById('progress-fill');
+    const progressPercentage = document.getElementById('progress-percentage');
+    
+    if (progressFill && progressPercentage) {
+        progressFill.style.width = `${percent}%`;
+        progressPercentage.textContent = `${percent}%`;
+    }
+}
+
 // Load data with progress tracking
 Promise.all([
     new Promise((resolve) => {
@@ -37,6 +48,9 @@ Promise.all([
             const currentTime = Date.now();
             if (rowCount % 10000 === 0 || currentTime - lastUpdateTime > 500) {
                 updateLoadingCount(rowCount);
+                // Add estimated progress - assuming we'll have around 100,000 rows
+                const estimatedProgress = Math.min(Math.round((rowCount / 100000) * 50), 50); // Max 50% for loading phase
+                updateProgressBar(estimatedProgress);
                 lastUpdateTime = currentTime;
             }
             
@@ -69,6 +83,10 @@ Promise.all([
         const progressPercent = Math.round((processedRows / totalRows) * 100);
         updateLoadingStatus(`Processing data... ${progressPercent}%`);
         
+        // Update the progress bar - processing phase takes the second 50%
+        const totalProgress = 30 + Math.round((processedRows / totalRows) * 30);
+        updateProgressBar(totalProgress);
+
         // Process a batch of data
         const endIdx = Math.min(processedRows + batchSize, totalRows);
         const batchStartTime = performance.now();
@@ -114,7 +132,7 @@ Promise.all([
             { message: 'Initializing data structures...', delay: 0 },
             { message: 'Creating crossfilter indices...', delay: 50 },
             { message: 'Building dimensions...', delay: 50 },
-            { message: 'Rendering charts...', delay: 50 }
+            { message: 'Rendering charts(this might take a while)...', delay: 50 }
         ];
         
         let stepIndex = 0;
@@ -123,6 +141,12 @@ Promise.all([
             if (stepIndex < steps.length) {
                 updateLoadingStatus(steps[stepIndex].message);
                 
+                // Calculate progress percentage for visualization steps (80-95%)
+                // Each step gets an equal portion of the 80-95% range
+                const stepProgress = 80 + Math.round((stepIndex / steps.length) * 15);
+                // Update progress bar
+                updateProgressBar(stepProgress);
+
                 // Use requestAnimationFrame for smoother UI updates
                 requestAnimationFrame(() => {
                     setTimeout(() => {
@@ -179,6 +203,7 @@ Promise.all([
         
         function performInitialization() {
             updateLoadingStatus('Initializing visualization...');
+            updateProgressBar(95); // Start at 95%
             console.log('Expanded data length:', expandedData.length);
             
             // Initialize Crossfilter
@@ -187,6 +212,7 @@ Promise.all([
             console.timeEnd('Crossfilter initialization');
             
             updateLoadingStatus('Creating chart dimensions...');
+            updateProgressBar(96);
             
             // Allow UI to update before continuing with heavy operations
             requestAnimationFrame(() => {
@@ -198,6 +224,7 @@ Promise.all([
                 const cityDim = cf.dimension(d => d.city);
                 
                 updateLoadingStatus('Building chart groups...');
+                updateProgressBar(97);
                 
                 // Allow UI to update again
                 requestAnimationFrame(() => {
@@ -209,6 +236,8 @@ Promise.all([
                     const cityGroup = cityDim.group().reduceCount();
                     
                     updateLoadingStatus('Rendering charts...');
+                    updateProgressBar(98);
+
                     
                     // Set up the charts
                     const timeChart = dc.barChart("#time-chart");
@@ -218,7 +247,7 @@ Promise.all([
                     
                     // Time chart
                     timeChart
-                        .width(800)
+                        .width(function() { return document.querySelector("#time-chart").offsetWidth; })
                         .height(200)
                         .margins({top: 10, right: 10, bottom: 20, left: 40})
                         .dimension(dateDim)
@@ -232,7 +261,7 @@ Promise.all([
 
                     // Module chart
                     moduleChart
-                        .width(280)  // Slightly smaller to account for scrollbar
+                        .width(function() { return document.querySelector("#module-chart").offsetWidth; })
                         .height(function() {
                             const itemCount = moduleGroup.all().length;
                             const barAndGapHeight = 33; // 30px bar + 3px gap
@@ -258,7 +287,7 @@ Promise.all([
 
                     // Function chart (same modifications)
                     functionChart
-                        .width(280)
+                        .width(function() { return document.querySelector("#function-chart").offsetWidth; })
                         .height(function() {
                             const itemCount = functionGroup.all().length;
                             const barAndGapHeight = 33; // 30px bar + 3px gap
@@ -302,13 +331,16 @@ Promise.all([
                     dc.renderAll();
 
                     // World Map
-                    const width = 800;
-                    const height = 400;
+                    const mapContainer = document.querySelector("#map-chart");
+                    const width = mapContainer.offsetWidth;
+                    const height = width * 0.5; // Maintain aspect ratio
 
                     const svg = d3.select("#map-chart")
                         .append("svg")
-                        .attr("width", width)
-                        .attr("height", height);
+                        .attr("width", "100%")
+                        .attr("height", height)
+                        .attr("viewBox", `0 0 ${width} ${height}`)
+                        .attr("preserveAspectRatio", "xMidYMid meet");
 
                     const projection = d3.geoMercator()
                         .scale(100)
@@ -404,11 +436,34 @@ Promise.all([
                             updateMap();
                         });
                     
-
-                    updateLoadingStatus('Finishing up...');
+                    window.addEventListener('resize', function() {
+                        // Resize the charts
+                        timeChart.width(document.querySelector("#time-chart").offsetWidth);
+                        moduleChart.width(document.querySelector("#module-chart").offsetWidth);
+                        functionChart.width(document.querySelector("#function-chart").offsetWidth);
+                        
+                        // For map, update the size
+                        const mapContainer = document.querySelector("#map-chart");
+                        const newWidth = mapContainer.offsetWidth;
+                        const newHeight = newWidth * 0.5;
+                        
+                        svg.attr("width", "100%")
+                            .attr("height", newHeight)
+                            .attr("viewBox", `0 0 ${newWidth} ${newHeight}`);
+                            
+                        // Update projection to fit new dimensions
+                        projection.translate([newWidth / 2, newHeight / 2]);
+                        
+                        // Redraw all charts
+                        dc.renderAll();
+                        updateMap();
+                    }, 250);
                     
                     setTimeout(() => {
+                        
                         document.getElementById('loading-spinner').style.display = 'none';
+                        // Set progress to 100% when complete
+                        updateProgressBar(100);
                         console.timeEnd('Total loading time');
                     }, 500);
                 });
