@@ -40,7 +40,7 @@ Promise.all([
         // Start with CSV loading message
         updateLoadingStatus('Loading CSV data...');
         
-        d3.csv('random_usage_data.csv', function(d) {
+        d3.csv('data.csv', function(d) {
             // This callback runs for each row
             rowCount++;
             
