@@ -65,6 +65,41 @@ Promise.all([
     d3.json('world.geojson')
 ]).then(function([data, worldData]) {
     console.time('Data processing time');
+
+    // Check if data is empty and handle gracefully
+    if (!data || data.length === 0) {
+        console.log('No data found in CSV file');
+        updateLoadingStatus('No data found');
+        updateProgressBar(100);
+        
+        // Hide loading spinner and show a message
+        document.getElementById('loading-spinner').style.display = 'none';
+        
+        // Display a user-friendly message
+        const messageElement = document.createElement('div');
+        messageElement.style.cssText = `
+            text-align: center; 
+            padding: 50px; 
+            font-size: 18px; 
+            color: #666;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            margin: 20px;
+        `;
+        messageElement.innerHTML = `
+            <h3>No Data Available</h3>
+            <p>The CSV file appears to be empty or could not be loaded.</p>
+            <p>Please check that 'data.csv' contains valid data.</p>
+        `;
+        
+        // Replace the charts container with the message
+        const chartsContainer = document.querySelector('.container') || document.body;
+        chartsContainer.appendChild(messageElement);
+        
+        console.timeEnd('Total loading time');
+        return; // Exit early
+    }
     
     // Update loading status for processing phase
     updateLoadingStatus('Processing data...');
@@ -246,16 +281,23 @@ Promise.all([
                     const cityChart = dc.barChart("#city-chart");
                     
                     // Time chart
+                    const dateExtent = d3.extent(expandedData, d => d.date);
+                    const paddedDateExtent = [
+                        d3.timeDay.offset(dateExtent[0], -1),
+                        d3.timeDay.offset(dateExtent[1], 1)
+                    ];
+                    
                     timeChart
                         .width(function() { return document.querySelector("#time-chart").offsetWidth; })
                         .height(200)
                         .margins({top: 10, right: 10, bottom: 20, left: 40})
                         .dimension(dateDim)
                         .group(dateGroup)
-                        .x(d3.scaleTime().domain(d3.extent(data, d => d.date)))
+                        .x(d3.scaleTime().domain(paddedDateExtent))
                         .round(d3.timeDay.round)
                         .xUnits(d3.timeDays)
                         .elasticY(true)
+                        .elasticX(false)
                         .renderHorizontalGridLines(true)
                         .brushOn(true);
 
@@ -330,25 +372,91 @@ Promise.all([
 
                     dc.renderAll();
 
+                    // Date pickers: setup and sync with time brush
+                    const startInput = document.getElementById('start-date');
+                    const endInput = document.getElementById('end-date');
+                    const minDate = dateExtent[0];
+                    const maxDate = dateExtent[1];
+                    
+                    // Flag to prevent circular updates
+                    let updatingFromDatePicker = false;
+                    
+                    function toISODate(d) {
+                        const t = new Date(d.getTime() - d.getTimezoneOffset() * 60000);
+                        return t.toISOString().split('T')[0];
+                    }
+                    function applyDateFilterFromInputs() {
+                        const hasStart = !!startInput.value;
+                        const hasEnd = !!endInput.value;
+
+                        let start = hasStart ? new Date(startInput.value) : minDate;
+                        let end = hasEnd ? new Date(endInput.value) : maxDate;
+
+                        // Normalize to day bounds
+                        start = new Date(start.getFullYear(), start.getMonth(), start.getDate(), 0, 0, 0, 0);
+                        end = new Date(end.getFullYear(), end.getMonth(), end.getDate(), 0, 0, 0, 0);
+
+                        // Keep dates logical - if start is after end, adjust end to be same as start
+                        if (start > end) {
+                            end = new Date(start.getTime());
+                            endInput.value = toISODate(end);
+                        }
+
+                        // Exclusive upper bound for dc/crossfilter brush (add 1 day to end)
+                        const endExclusive = d3.timeDay.offset(end, 1);
+
+                        // Maintain logical constraints for input fields
+                        endInput.min = startInput.value || toISODate(minDate);
+                        startInput.max = endInput.value || toISODate(maxDate);
+
+                        // Set flag to prevent onFiltered from overwriting our inputs
+                        updatingFromDatePicker = true;
+
+                        // Apply filter to dimension and chart
+                        if (!hasStart && !hasEnd) {
+                            dateDim.filterAll();
+                            timeChart.filterAll();
+                        } else {
+                            // Filter the dimension directly
+                            dateDim.filterRange([start, endExclusive]);
+                            // Also update the chart's filter to sync the brush visual
+                            timeChart.filter(null); // Clear first
+                            timeChart.filter(dc.filters.RangedFilter(start, endExclusive));
+                        }
+
+                        // Render all charts (not redraw, to update the brush)
+                        dc.renderAll();
+                        updateMap();
+                        
+                        // Reset flag after a small delay to ensure all events have fired
+                        setTimeout(() => {
+                            updatingFromDatePicker = false;
+                        }, 100);
+                    }
+                    // Initialize input bounds
+                    startInput.min = toISODate(minDate);
+                    startInput.max = toISODate(maxDate);
+                    endInput.min = toISODate(minDate);
+                    endInput.max = toISODate(maxDate);
+                    // Listeners
+                    startInput.addEventListener('change', applyDateFilterFromInputs);
+                    endInput.addEventListener('change', applyDateFilterFromInputs);
+
                     // World Map
                     const mapContainer = document.querySelector("#map-chart");
                     const width = mapContainer.offsetWidth;
-                    const height = width * 0.5; // Maintain aspect ratio
-
+                    const height = width * 0.5;
                     const svg = d3.select("#map-chart")
                         .append("svg")
                         .attr("width", "100%")
                         .attr("height", height)
                         .attr("viewBox", `0 0 ${width} ${height}`)
                         .attr("preserveAspectRatio", "xMidYMid meet");
-
                     const projection = d3.geoMercator()
                         .scale(100)
                         .center([0,20])
                         .translate([width / 2, height / 2]);
-
                     const path = d3.geoPath().projection(projection);
-
                     const colorScale = d3.scaleThreshold()
                         .domain([1, 5, 10, 20, 50, 100])
                         .range(d3.schemeBlues[7]);
@@ -407,27 +515,54 @@ Promise.all([
                     // Set up event handlers
                     document.getElementById('module-search').addEventListener('input', createSearchFunction(moduleDim, moduleChart));
                     document.getElementById('function-search').addEventListener('input', createSearchFunction(functionDim, functionChart));
-                    
-                    // Update map when any chart is filtered
-                    function onFiltered() {
+
+                    // Update map and sync date inputs when charts are filtered
+                    function onFiltered(chart, filter) {
+                        if (chart === timeChart && !updatingFromDatePicker) {
+                            if (filter && filter.length) {
+                                // filter[0] inclusive, filter[1] exclusive -> show previous day in end input
+                                const startInc = filter[0];
+                                const endInc = d3.timeDay.offset(filter[1], -1);
+                                startInput.value = toISODate(startInc);
+                                endInput.value = toISODate(endInc);
+                                endInput.min = startInput.value || toISODate(minDate);
+                                startInput.max = endInput.value || toISODate(maxDate);
+                            } else {
+                                startInput.value = '';
+                                endInput.value = '';
+                                startInput.max = toISODate(maxDate);
+                                endInput.min = toISODate(minDate);
+                            }
+                        }
                         updateMap();
                     }
-                    
+
                     timeChart.on("filtered", onFiltered);
                     moduleChart.on("filtered", onFiltered);
                     functionChart.on("filtered", onFiltered);
                     cityChart.on("filtered", onFiltered);
-                    
+
                     // Add reset button
                     d3.select('#reset-button')
                         .on('click', function() {
                             dc.filterAll();
                             countryDim.filterAll();
                             cityDim.filterAll();
-                            
-                            // Clear search boxes
+                            dateDim.filterAll();
+
+                            // Clear search and date inputs
                             document.getElementById('module-search').value = '';
                             document.getElementById('function-search').value = '';
+                            const s = document.getElementById('start-date');
+                            const e = document.getElementById('end-date');
+                            if (s && e) {
+                                s.value = '';
+                                e.value = '';
+                                s.min = toISODate(minDate);
+                                s.max = toISODate(maxDate);
+                                e.min = toISODate(minDate);
+                                e.max = toISODate(maxDate);
+                            }
                             
                             moduleChart.group(moduleGroup);
                             functionChart.group(functionGroup);

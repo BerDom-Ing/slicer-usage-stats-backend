@@ -215,6 +215,19 @@
             max-width: 100% !important;
             height: auto !important;
         }
+
+        /* Date filter bar */
+        .filter-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+        .date-input {
+            padding: 6px 8px;
+        }
     </style>
 
 </head>
@@ -244,7 +257,11 @@
             </div>
         </div>
         <div class="center-container">
-            <button id="reset-button">Reset All Filters</button>
+            <div class="filter-bar">
+                <input type="date" id="start-date" class="date-input">
+                <button id="reset-button">Reset All Filters</button>
+                <input type="date" id="end-date" class="date-input">
+            </div>
             <div id="time-chart" class="chart"></div>
             <div id="tooltip"></div>
             <div id="map-chart" class="chart"></div>
